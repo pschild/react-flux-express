@@ -13,9 +13,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/users', function (req, res) {
-    res.json({
-        users: USERS
-    });
+    // simulate slow internet connection:
+    setTimeout(function() {
+        res.json({
+            users: USERS
+        });
+    }, 3000);
 });
 
 app.get('/user/:id', function (req, res) {

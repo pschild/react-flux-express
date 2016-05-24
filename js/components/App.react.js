@@ -6,12 +6,17 @@ var Footer = require('./Footer.react');
 var UserStore = require('../stores/UserStore');
 var UserActions = require('../actions/UserActions');
 
+function getStateFromStores() {
+    return {
+        allUsers: UserStore.getAll(),
+        isPending: UserStore.isPending()
+    };
+}
+
 var App = React.createClass({
 
     getInitialState: function() {
-        return {
-            allUsers: UserStore.getAll() // initially an empty list
-        };
+        return getStateFromStores();
     },
 
     componentDidMount: function() {
@@ -24,16 +29,14 @@ var App = React.createClass({
     },
 
     _onChange: function() {
-        this.setState({
-            allUsers: UserStore.getAll() // load the updated list of users from the store
-        });
+        this.setState(getStateFromStores());
     },
 
     render: function() {
         return (
             <div>
                 <Header />
-                <List users={this.state.allUsers} />
+                <List users={this.state.allUsers} isPending={this.state.isPending} />
                 <Footer />
             </div>
         );

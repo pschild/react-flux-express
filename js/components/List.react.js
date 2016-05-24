@@ -9,7 +9,7 @@ var List = React.createClass({
             listItems.push(<ListItem key={this.props.users[i].id} user={this.props.users[i]} />);
         }
 
-        return (
+        var userTable = (
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -23,6 +23,8 @@ var List = React.createClass({
                 </tbody>
             </table>
         );
+
+        return this.props.isPending ? (<div>Loading...</div>) : userTable;
     }
 
 });

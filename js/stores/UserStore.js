@@ -6,11 +6,16 @@ var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
 var _users = [];
+var _isPending = false;
 
 var UserStore = assign({}, EventEmitter.prototype, {
 
     getAll: function () {
         return _users;
+    },
+
+    isPending: function () {
+        return _isPending;
     },
 
     emitChange: function () {
@@ -29,14 +34,18 @@ var UserStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (action) {
     switch (action.actionType) {
         case UserConstants.USER_CREATE:
-            console.log('USER_CREATE', action);
-            _users.push(action.response.user);
+            _users.push(action.payload.user);
+            UserStore.emitChange();
+            break;
+
+        case UserConstants.USERS_LOADING:
+            _isPending = true;
             UserStore.emitChange();
             break;
 
         case UserConstants.USERS_LOADED:
-            console.log('USERS_LOADED', action);
-            _users = action.response.users;
+            _users = action.payload.users;
+            _isPending = false;
             UserStore.emitChange();
             break;
 

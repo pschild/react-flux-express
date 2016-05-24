@@ -6,7 +6,7 @@ var UserConstants = require('./constants/UserConstants');
 function _dispatch(key, response) {
     AppDispatcher.dispatch({
         actionType: key,
-        response: response
+        payload: response
     });
 }
 
