@@ -17,6 +17,7 @@
 [Source: https://github.com/facebook/flux]
 
 Synchronous: View > Action > Dispatcher > Store > View
+
 Asynchronous: View > Action > Web API Utils > Action > Dispatcher > Store > View
 
 ### Do's :+1:
