@@ -21,10 +21,11 @@ Synchronous: View > Action > Dispatcher > Store > View
 Asynchronous: View > Action > Web API Utils > Action > Dispatcher > Store > View
 
 ### Do's :+1:
-* Keep `Store(s)` synchronous
+* Keep `Stores` synchronous
+* Application state and logic is maintained only in the `Stores`
 * Create `Actions` from `Views` or `Web API Utils`/`Server`
 * Every change of sate should go through the `Dispatcher`
 
 ### Dont's :-1:
-* Asynchronous operations in `Store(s)`
+* Asynchronous operations in `Stores`
 * Event Chaining
