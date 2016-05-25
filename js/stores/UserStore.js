@@ -49,6 +49,22 @@ AppDispatcher.register(function (action) {
             UserStore.emitChange();
             break;
 
+        case UserConstants.USER_REMOVE:
+            _users = action.payload.users;
+            UserStore.emitChange();
+            break;
+
+        case UserConstants.USER_UPDATED:
+            var updatedUser = action.payload.user;
+            for (var i = 0; i < _users.length; i++) {
+                if (_users[i].id == updatedUser.id) {
+                    _users[i] = updatedUser;
+                    break;
+                }
+            }
+            UserStore.emitChange();
+            break;
+
         default:
             // no op
     }

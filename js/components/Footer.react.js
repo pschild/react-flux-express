@@ -37,14 +37,19 @@ var Footer = React.createClass({
     render: function() {
         return (
             <footer>
+                <h3>Create new user</h3>
                 <form className="form-inline">
                     <div className="form-group">
                         <input type="text" className="form-control" placeholder="Username" onChange={this.handleNameChange} value={this.state.name} />
                     </div>
+                    &nbsp;
                     <div className="form-group">
-                        <input type="number" className="form-control" placeholder="Age" onChange={this.handleAgeChange} value={this.state.age} />
+                        <input type="number" min="0" className="form-control" placeholder="Age" onChange={this.handleAgeChange} value={this.state.age} />
                     </div>
-                    <button type="button" className="btn btn-default" onClick={this.handleSaveUserButtonClicked}>save</button>
+                    &nbsp;
+                    <button type="button" className="btn btn-success" onClick={this.handleSaveUserButtonClicked}>
+                        <i className="glyphicon glyphicon-ok"></i>
+                    </button>
                 </form>
             </footer>
         );

@@ -16,6 +16,7 @@ var List = React.createClass({
                         <th>ID</th>
                         <th>Name</th>
                         <th>Age</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>

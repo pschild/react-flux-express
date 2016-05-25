@@ -33,6 +33,29 @@ var WebApi = {
         }).fail(function() {
             console.error('Ooops! Something went wrong...');
         });
+    },
+
+    remove: function(user) {
+        $.ajax({
+            url: 'user/' + user.id,
+            method: 'DELETE'
+        }).done(function(response) {
+            _dispatch(UserConstants.USER_REMOVE, response);
+        }).fail(function() {
+            console.error('Ooops! Something went wrong...');
+        });
+    },
+
+    update: function(user, payload) {
+        $.ajax({
+            url: 'user/' + user.id,
+            method: 'PUT',
+            data: payload
+        }).done(function(response) {
+            _dispatch(UserConstants.USER_UPDATED, response);
+        }).fail(function() {
+            console.error('Ooops! Something went wrong...');
+        });
     }
 
 };

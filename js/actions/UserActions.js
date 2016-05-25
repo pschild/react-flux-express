@@ -16,6 +16,14 @@ var UserActions = {
 
     create: function(payload) {
         WebApi.create(payload);
+    },
+
+    remove: function(user) {
+        WebApi.remove(user);
+    },
+
+    update: function(user, payload) {
+        WebApi.update(user, payload);
     }
 
 };

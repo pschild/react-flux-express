@@ -18,7 +18,7 @@ app.get('/users', function (req, res) {
         res.json({
             users: USERS
         });
-    }, 3000);
+    }, 30);
 });
 
 app.get('/user/:id', function (req, res) {
